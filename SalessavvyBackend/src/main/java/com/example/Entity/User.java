@@ -9,10 +9,12 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User {
 
 	@Id
@@ -39,18 +41,28 @@ public class User {
 	private LocalDateTime  updatedAt = LocalDateTime.now();
 
 
-	public User(Integer userId, String username, String email, String password, Role role, LocalDateTime createdAt,
-			LocalDateTime updatedAt) {
-		super();
-		this.userId = userId;
-		this.username = username;
-		this.email = email;
-		this.password = password;
-		this.role = role;
-		this.createdAt = createdAt;
-		this.updatedAt = updatedAt;
-	}
+	 protected User() {
+	    }
 
+	    // Optional constructor (for manual creation)
+	    public User(String username, String email, String password, Role role) {
+	        this.username = username;
+	        this.email = email;
+	        this.password = password;
+	        this.role = role;
+	    }
+
+	    @PrePersist
+	    protected void onCreate() {
+	        this.createdAt = LocalDateTime.now();
+	        this.updatedAt = LocalDateTime.now();
+	    }
+
+	    @PreUpdate
+	    protected void onUpdate() {
+	        this.updatedAt = LocalDateTime.now();
+	    }
+	    
 	public Integer getUserId() {
 		return userId;
 	}
