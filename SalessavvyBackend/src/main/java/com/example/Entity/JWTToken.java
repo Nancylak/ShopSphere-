@@ -43,6 +43,10 @@ public class JWTToken {
 			this.token = token;
 			this.expiresAt = expiresAt;
 		}
+		public JWTToken() {
+			super();
+			// TODO Auto-generated constructor stub
+		}
 	//Getters and setters
 
 		public Integer getTokenId() {
