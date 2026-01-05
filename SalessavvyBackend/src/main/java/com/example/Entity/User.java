@@ -44,7 +44,6 @@ public class User {
 	 protected User() {
 	    }
 
-	    // Optional constructor (for manual creation)
 	    public User(String username, String email, String password, Role role) {
 	        this.username = username;
 	        this.email = email;
