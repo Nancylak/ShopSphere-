@@ -69,11 +69,6 @@ public class ProductImage {
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
 	}
-
-	public List<ProductImage> findByProduct_ProductId(Integer productId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
     
     
     
